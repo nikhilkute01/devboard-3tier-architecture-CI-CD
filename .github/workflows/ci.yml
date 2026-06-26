@@ -11,14 +11,14 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout Code
-              uses: actions/checkout@v7
+              uses: actions/checkout@v4
 
             - name: stepUp NodeJS 
-              uses: actions/setup-node@v6
+              uses: actions/setup-node@v4
               with:
                 node-version: '20'
                 cache: npm
-                cache-dependency: frontend/package-lock.json
+                cache-dependency-path: frontend/package-lock.json
 
             - name: Install Packages
               run: npm install
@@ -26,7 +26,7 @@ jobs:
 
             - name: Run Linter
               run: npm run lint
-              working- directory: frontend
+              working-directory: frontend
 
             - name: Run Tests
               run: npm run test
