@@ -10,7 +10,7 @@ jobs:
         runs-on: self-hosted
         steps:
             - name: Code Checkout
-              uses: actions/checkout@v7
+              uses: actions/checkout@v4
 
             - name: Copy example env to main env
               run: cp .env.example .env
@@ -23,5 +23,5 @@ jobs:
               
             - name: Deploy the container with docker compose
               run: |
-              docker compose pull
-              docker compose up -d
+               docker compose pull
+               docker compose up -d
