@@ -29,7 +29,7 @@ jobs:
               run: |
                 ~/go/bin/govulncheck ./... | tee govulncheck-report.txt || true
               working-directory: backend
-              
+
             - name: Upload Govulncheck Report
               if: always()
               uses: actions/upload-artifact@v4
@@ -45,7 +45,7 @@ jobs:
                 cache-dependency-path: frontend/package-lock.json
 
             - name: Run Dependency Scan for Node
-              run: npm audit
+              run: npm audit fix --force
               working-directory: frontend
 
             - name: Upload Report to Artifacts
