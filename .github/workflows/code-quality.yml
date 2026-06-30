@@ -1,0 +1,45 @@
+name: Code Quality
+
+on:
+    push:
+        branches:
+            - main
+
+
+jobs:
+    sast:
+        runs-on: ubuntu-latest
+        steps:
+
+            - name: Code Checkout
+              uses: actions/checkout@v4
+
+            - name: setup Node JS
+              uses: actions/setup-node@v4
+              with:
+                node-version: '20'
+                cache: npm
+                cache-dependency-path: frontend/package-lock.json
+
+            - name: NPM Install
+              run: npm install --legacy-peer-deps
+              working-directory: frontend
+
+            - name: Run linter
+              run: npm run lint
+              working-directory: frontend
+
+            - name: Setup GO
+              uses: actions/setup-go@v4
+              with:
+                go-version: '1.23'
+                go-version-file: 'go.mod'
+                cache-dependency-path: go.sum
+
+            - name: GO Formatter
+              run: go fmt
+              working-directory: backend
+
+            - name: Run Go vet
+              run: go vet
+              working-directory: backend
