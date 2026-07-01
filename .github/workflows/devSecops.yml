@@ -1,0 +1,29 @@
+name: DevSecOps
+
+on:
+    push:
+        branches: [main]
+
+jobs:
+
+    ## ---- CI ----
+  
+    code-quality:
+        uses: ./.github/workflows/code-quality.yml
+
+   
+    secret-scanning:
+        uses: ./.github/workflows/secret-scanning.yml
+
+    dependency-checks:
+        uses: ./.github/workflows/dependency-scan.yml
+
+    docker-checks:
+        uses: ./.github/workflows/docker-scan.yml
+        secrets: inherit 
+
+    sonar-qube:
+        uses: ./.github/workflows/sonar-queu.yml
+        secrets: inherit
+
+  
