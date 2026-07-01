@@ -44,7 +44,10 @@ type Project struct {
 }
 
 func main() {
-	dsn := env("POSTGRES_URL", "postgres://devboard:devboard@localhost:5432/devboard?sslmode=disable")
+	dsn := os.Getenv("POSTGRES_URL")
+	if dsn == "" {
+		log.Fatal("POSTGRES_URL environment variable is required")
+	}
 
 	var err error
 	db, err = sql.Open("postgres", dsn)
