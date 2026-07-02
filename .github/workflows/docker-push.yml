@@ -6,7 +6,7 @@ on:
 
 jobs:
     rontend:
-        # Github runner
+        
         runs-on: ubuntu-latest
         strategy:
             fail-fast: false
