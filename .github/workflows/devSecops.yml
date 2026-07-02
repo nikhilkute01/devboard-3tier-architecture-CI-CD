@@ -25,6 +25,9 @@ jobs:
     sonar-qube:
         uses: ./.github/workflows/sonar-queu.yml
         secrets: inherit
+    
+    code-tests:
+        uses: ./.github/workflows/code-test.yml
 
     docker-push:
         uses: ./.github/workflows/docker-push.yml
