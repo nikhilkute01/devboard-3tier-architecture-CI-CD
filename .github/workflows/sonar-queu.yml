@@ -16,9 +16,4 @@ jobs:
                 SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
                 SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         
-              run: |
-                sonar-scanner \
-                  -Dsonar.host.url=$SONAR_HOST_URL \
-                  -Dsonar.login=$SONAR_TOKEN \
-                  -Dsonar.scanner.connectTimeout=60 \
-                  -Dsonar.scanner.socketTimeout=120
+              
